@@ -17,4 +17,4 @@ RUN poetry install --no-root --no-interaction --no-ansi
 
 COPY app ./app
 
-CMD ["poetry", "run", "python", "-m", "flask", "--app=beer_catalog.app", "run", "--host=0.0.0.0", "--port=5000"]
+CMD ["poetry", "run", "python", "-m", "flask", "--app=app.beer_catalog.app", "run", "--host=0.0.0.0", "--port=5000"]
