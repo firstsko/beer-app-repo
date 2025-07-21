@@ -47,3 +47,8 @@ variable "security_group_name" {
   type        = string
   default     = "shippio-sg"
 }
+
+variable "flask_env" {
+  description = "Flask environment (development or production)"
+  type        = string
+}

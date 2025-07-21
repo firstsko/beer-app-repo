@@ -71,5 +71,7 @@ variable "ecs_autoscaling_role_name" {
   type = string
 }
 
-
+variable "flask_env" {
+  type        = string
+}
 

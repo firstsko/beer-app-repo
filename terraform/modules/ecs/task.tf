@@ -16,7 +16,13 @@ resource "aws_ecs_task_definition" "app" {
           containerPort = 5000
           protocol      = "tcp"
         }
-      ]
+      ],
+      environment = [
+      {
+        name  = "FLASK_ENV"
+        value = var.flask_env
+      }
+    ]
     }
   ])
 }
