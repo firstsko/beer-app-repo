@@ -3,12 +3,6 @@ variable "aws_region" {
   type        = string
 }
 
-#security
-variable "security_group_name" {
-  type  = string
-}
-
-
 #RDS 
 variable "db_name" {
   description = "Name of the RDS database"
@@ -35,17 +29,6 @@ variable "allowed_cidrs" {
   type        = list(string)
 }
 
-variable "rds-master-credentials" {
-  description = "Name of rds master credential"
-  type        = string
-}
-
-variable "rds-app-user-credentials" {
-  description = "Name of app user credential"
-  type        = string
-}
-
-
 #ECS
 variable "cluster_name" {
   type = string
@@ -64,12 +47,9 @@ variable "execution_role_arn" {
 }
 
 variable "ecs_task_execution_role_name" {
-  type = string
+  type        = string
 }
 
 variable "ecs_autoscaling_role_name" {
-  type = string
+  type        = string
 }
-
-
-

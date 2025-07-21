@@ -1,6 +1,5 @@
 resource "aws_ecr_repository" "app_repo" {
-  name = "beer-app-repo"
-
+  name                 = var.repository_name
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
@@ -8,7 +7,7 @@ resource "aws_ecr_repository" "app_repo" {
   }
 
   tags = {
-    Name = "beer-app-repo"
+    Name = var.repository_name
   }
 }
 

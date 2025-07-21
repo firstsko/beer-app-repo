@@ -21,3 +21,29 @@ variable "execution_role_arn" {
   type        = string
   default     = "arn:aws:iam::589140421825:role/ecsTaskExecutionRole"
 }
+
+
+variable "app_port" {
+  description = "Port that the app container listens on"
+  type        = number
+  default     = 5000
+}
+
+
+variable "ecs_task_execution_role_name" {
+  description = "Name of the ECS task execution IAM role"
+  type        = string
+  default     = "ecsTaskExecutionRole"
+}
+
+variable "ecs_autoscaling_role_name" {
+  description = "Name of the ECS autoscaling IAM role"
+  type        = string
+  default     = "ecsAutoscalingRole"
+}
+
+variable "security_group_name" {
+  description = "Name of env security group"
+  type        = string
+  default     = "shippio-sg"
+}
