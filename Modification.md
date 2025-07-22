@@ -28,7 +28,7 @@ Enabled configuration via external environment variables (e.g., in Terraform) to
 ---
 ## Directory Structure
 
-···text
+<pre lang="nohighlight"><code>```text 
 .
 ├── app
 │   ├── beer_catalog
@@ -94,7 +94,7 @@ Enabled configuration via external environment variables (e.g., in Terraform) to
     ├── terraform.tfstate
     └── versions.tf
 
-```
+```</code></pre>
 
 ## Terraform Workflow
 
