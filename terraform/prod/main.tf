@@ -18,6 +18,7 @@ module "ecs" {
   ecs_task_execution_role_name = var.ecs_task_execution_role_name
   ecs_autoscaling_role_name    = var.ecs_autoscaling_role_name
   security_group_name = module.security.security_group_id
+  flask_env           = var.flask_env
 }
 
 
