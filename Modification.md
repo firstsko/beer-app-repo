@@ -53,18 +53,18 @@ Enabled configuration via external environment variables (e.g., in Terraform) to
     │   ├── plan.txt
     │   ├── terraform.tfstate
     │   ├── terraform.tfstate.backup
-    │   ├── terraform.tfvars
+    │   ├── terraform.tfvars   #define your development variable in here
     │   ├── tfplan
     │   └── variables.tf
     ├── main.tf
     ├── modules
     │   ├── ecr
-    │   │   ├── main.tf
+    │   │   ├── main.tf         #define your ecr here
     │   │   └── variables.tf
     │   ├── ecs
     │   │   ├── autoscaling.tf
     │   │   ├── cluster.tf
-    │   │   ├── iam.tf
+    │   │   ├── iam.tf               
     │   │   ├── network.tf
     │   │   ├── service.tf
     │   │   ├── task.tf
@@ -74,21 +74,21 @@ Enabled configuration via external environment variables (e.g., in Terraform) to
     │   │   ├── main.tf
     │   │   ├── network.tf
     │   │   ├── output.tf
-    │   │   ├── secrets.tf
-    │   │   ├── user.tf
+    │   │   ├── secrets.tf     #defien your secrets managment
+    │   │   ├── user.tf        #define your rds user configuration
     │   │   └── variables.tf
     │   ├── security
-    │   │   ├── main.tf
+    │   │   ├── main.tf  #networking,firewall configuration
     │   │   ├── outputs.tf
     │   │   └── variables.tf
     │   └── vpc
     ├── prod
     │   ├── main.tf
-    │   ├── terraform.tfvars
+    │   ├── terraform.tfvars   #define your production variable in here
     │   └── variables.tf
     ├── README.md
-    ├── shared
-    │   ├── main.tf
+    ├── shared                #shared module for ecs(other common modules)
+    │   ├── main.tf              
     │   ├── terraform.tfvars
     │   └── variables.tf
     ├── terraform.tfstate
@@ -98,22 +98,31 @@ Enabled configuration via external environment variables (e.g., in Terraform) to
 
 ## Terraform Workflow
 
-# STEP 1
+### STEP 1
 Go to the shared directory and apply Terraform to create the ECR repository first.(common for dev and prod)
 
-# STEP 2
+### STEP 2
 Push the code to GitHub to trigger the GitHub Action.
 
-# STEP 3
+### STEP 3
 Define the `terraform.tfvars` file correctly in each environment directory (e.g., dev, prod).
 
-# STEP 4
+### STEP 4
 Execute Terraform in the appropriate environment directory (dev or prod).
 
-# STEP 5
+### STEP 5
 Display the outputs. The RDS connection infomation will be generated randomly and marked as sensitive.
 terraform output
 
+```text
+admin_secret_arn = "arn:aws:secretsmanager:ap-northeast-3:589140421825:secret:shippio-rds-master-credential-LjHQuw"
+app_user_secret_arn = "arn:aws:secretsmanager:ap-northeast-3:589140421825:secret:shippio-rds-app-user-credential-4fitju"
+rds_app_password = <sensitive>
+rds_endpoint = "shippio-postgres-db.cbu2osgw4k6v.ap-northeast-3.rds.amazonaws.com:5432"
+rds_master_password = <sensitive>
+rds_master_username = "devmaster"
+rds_psql_connect_command = <sensitive>
+```
 
 ## GitHub Action CI/CD
 .github/workflow/docker.yml
@@ -202,7 +211,7 @@ http://15.152.113.47:5000/
 
 
 ## Coming Soon
- Inject SQLAlchemy-compatible DATABASE_URL
+ Inject SQLAlchemy-compatible DATABASE_URL(base on contianer env variable,e.g. dev env use sqlite,prod env use porsgre)
 
  Staging environment and blue/green deployment support
 
