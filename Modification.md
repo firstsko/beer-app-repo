@@ -96,7 +96,7 @@ Enabled configuration via external environment variables (e.g., in Terraform) to
 
 ```</code></pre>
 
-## Terraform Workflow
+## Deploy Workflow
 
 ### STEP 1
 Go to the shared directory and apply Terraform to create the ECR repository first.(common for dev and prod)
